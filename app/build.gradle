@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+
+android {
+    applicationVariants.all { variant ->
+        variant.outputs.all{
+            outputFileName = "myyy-${variant.buildType.name}-${rootProject.ext.android.versionName}.apk"
+        }
+    }
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion buildToolsVersion
+    signingConfigs {
+        release {
+            keyAlias 'phonelive'
+            keyPassword 'phonelive'
+            storeFile file('../drant.jks')
+            storePassword 'phonelive'
+        }
+        debug {
+            keyAlias 'phonelive'
+            keyPassword 'phonelive'
+            storeFile file('../drant.jks')
+            storePassword 'phonelive'
+        }
+    }
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+    defaultConfig {
+        applicationId "com.chuangjin.yunyisdk"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        manifestPlaceholders = rootProject.ext.manifestPlaceholders
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86_64", "x86"
+        }
+
+        javaCompileOptions{
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("boolean", "IS_APP_DEBUG", 'false')
+            buildConfigField("boolean", "IS_LOG_DEBUG", 'false')
+            manifestPlaceholders = [bugly: false]
+        }
+        debug {
+            signingConfig signingConfigs.release
+            buildConfigField("boolean", "IS_APP_DEBUG", "${IS_APP_DEBUG}")
+            buildConfigField("boolean", "IS_LOG_DEBUG", 'true')
+            manifestPlaceholders = [bugly: true]
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        pickFirst 'lib/armeabi-v7a/libsecsdk.so'
+        pickFirst 'lib/armeabi/libsecsdk.so'
+        pickFirst 'lib/arm64-v8a/libsecsdk.so'
+        exclude 'assets/rsa/t.jks'
+        exclude 'assets/sm2/t.jks'
+
+        exclude 'assets/rsa/r.jks'
+        exclude 'assets/sm2/r.jks'
+        exclude 'assets/nim/nim_keystore2'
+        exclude 'assets/nim/rsa/r.jks'
+        exclude 'assets/nim/sm2/t.jks'
+        exclude 'assets/nim/rsa/t.jks'
+        exclude 'assets/nim/sm2/r.jks'
+        exclude 'assets/nim/nim_keystore'
+
+        pickFirst '**/libc++_shared.so'
+        doNotStrip "*/armeabi/libYTCommon.so"
+        doNotStrip "*/armeabi-v7a/libYTCommon.so"
+        doNotStrip "*/x86/libYTCommon.so"
+        doNotStrip "*/arm64-v8a/libYTCommon.so"
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs', '../libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'org.jetbrains:annotations:15.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+//    implementation project(':HHDoctorVideo')
+//    compile files('libs/HHDoctorVideo-release.aar')
+//    api 'com.android.support:appcompat-v7:27.1.1'
+//    api 'com.android.support:recyclerview-v7:27.1.1'
+//    api 'com.android.support:design:27.1.1'
+//    api 'com.android.support:support-v4:27.1.1'
+//    api 'com.android.support:multidex:1.0.1'
+//    api 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.chuangjin:HHDoctorSDK:1.1.4'
+}

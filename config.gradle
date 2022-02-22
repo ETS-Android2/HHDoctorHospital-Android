@@ -1,0 +1,23 @@
+ext {
+    android = [
+            compileSdkVersion: 27,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 21,
+            targetSdkVersion : 27,
+            versionCode      : 284,
+            versionName      : "2.8.4"
+    ]
+
+    manifestPlaceholders = [
+            /*蚂蚁云医生产系统:
+                    商城:mx.mbdsp.com
+                    视频:vx.mbdsp.com*/
+            //视频上传地址
+            serverHostUpload : IS_APP_DEBUG.toBoolean() ? "https://video.ybgyl.cn" :  "https://v.chiyangjj.com",
+
+            serverHostShop   : IS_APP_DEBUG.toBoolean() ? "https://shop.ybgyl.cn" : "https://m.chiyangjj.com",//商城
+            serverHost       : IS_APP_DEBUG.toBoolean() ? "https://video.ybgyl.cn" : "https://v.chiyangjj.com",//视频
+
+    ]
+
+}

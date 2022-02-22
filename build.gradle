@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
+apply from: "dependencies.gradle"
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven {
+//            url "https://maven.google.com"//国外
+            url 'http://maven.aliyun.com/nexus/content/groups/public'//国内
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '62145e4c8a5fa57059fff483'
+                password '9DOsuA_wfB0g'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2190323-release-1mIn35/'
+        }
+        maven {
+            credentials {
+                username '62145e4c8a5fa57059fff483'
+                password '9DOsuA_wfB0g'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2190323-snapshot-cGH0Qq/'
+        }
+//        maven{
+//            url "https://dl.bintray.com/tencentqcloudterminal/maven"
+//        }
+//        maven { url "https://jitpack.io" }
+        maven {
+            credentials {
+                username 'hh-public'
+                password 'OFGB5wX0'
+            }
+            url 'http://develop.hh-medic.com/repository/maven-public'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
