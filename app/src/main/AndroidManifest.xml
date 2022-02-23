@@ -43,10 +43,14 @@
         android:persistent="true"
         android:theme="@style/AppTheme">
 
-
+<!--        用户配置项-->
         <meta-data
-            android:name="HHDoctorSDK"
-            android:value="12323423" />
+            android:name="partid"
+            android:value="10282" />
+        <meta-data
+            android:name="partcode"
+            android:value="OFNUaTl1d3hndFZkQkhDUnBZYjBaZz09" />
+
         <activity
             android:name="com.chuangjin.yunyisdk.activity.LauncherActivity"
             android:exported="true"
@@ -71,77 +75,8 @@
 
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
-        </activity> <!-- 微信登录,分享回调页面 -->
-        <activity
-            android:name="com.chuangjin.yunyisdk.wxapi.WXEntryActivity"
-            android:exported="true"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.chuangjin.yunyisdk"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- 蚂蚁云医互联网医院 -->
-        <!-- 腾讯地图定位 -->
-        <meta-data
-            android:name="TencentMapSDK"
-            android:value="${txMapAppKey}" />
-        <meta-data
-            android:name="TencentMapAppSecret"
-            android:value="${txMapAppSecret}" /> <!-- 腾讯bugly -->
-        <meta-data
-            android:name="BUGLY_APPID"
-            android:value="${buglyAppId}" />
-        <meta-data
-            android:name="BUGLY_APP_CHANNEL"
-            android:value="com.chuangjin.yunyi" />
-        <meta-data
-            android:name="BUGLY_ENABLE_DEBUG"
-            android:value="${bugly}" /> <!-- 腾讯bugly end -->
-        <!-- 百度语音识别 -->
-        <meta-data
-            android:name="com.baidu.speech.APP_ID"
-            android:value="${baiduAppId}" />
-        <meta-data
-            android:name="com.baidu.speech.API_KEY"
-            android:value="${baiduAppKey}" />
-        <meta-data
-            android:name="com.baidu.speech.SECRET_KEY"
-            android:value="${baiduAppSecretKey}" />
+        </activity>
 
-        <meta-data
-            android:name="SERVER_HOST"
-            android:value="${serverHost}" /> <!-- H5服务器地址 -->
-        <meta-data
-            android:name="SERVER_HOST_POST"
-            android:value="${serverHostShop}" /> <!-- md5答题 -->
-        <meta-data
-            android:name="MD5_ANSWER"
-            android:value="${md5Answer}" /> <!-- 视频上传地址 -->
-        <meta-data
-            android:name="SERVER_HOST_UPLOAD"
-            android:value="${serverHostUpload}" /> <!-- 穿山甲 -->
-        <meta-data
-            android:name="AD_FULLSCREEN_VERTICAL"
-            android:value="${adFullscreenVertical}" /> <!-- 穿山甲-激励竖屏 -->
-        <meta-data
-            android:name="AD_REWARD_VERTICAL"
-            android:value="${adRewardVertical}" /> <!-- 穿山甲-激励竖屏 -->
-        <meta-data
-            android:name="AD_DRAW"
-            android:value="${adDraw}" /> <!-- 腾讯云鉴权url -->
-        <meta-data
-            android:name="UGC_LICENCE_URL"
-            android:value="${ugcLicenceUrl}" /> <!-- 腾讯云鉴权key -->
-        <meta-data
-            android:name="UGC_KEY"
-            android:value="${ugcKey}" />
-        <meta-data
-            android:name="WECHAT_APP_ID"
-            android:value="${wechatAppId}" />
-        <meta-data
-            android:name="RSA_PUBLIC_KEY"
-            android:value="${rsaPublicKey}"/>
-        <meta-data
-            android:name="DEV_RSA_PRIVATE_KEY"
-            android:value="${devRsaPrivateKey}"/>
     </application>
 
 </manifest>
