@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.chuangjin.HHDoctorV.HHDoctorSDK;
 import com.chuangjin.HHDoctorV.WebViewShopXActivity;
 import com.chuangjin.yunyisdk.R;
-
-import org.jetbrains.annotations.Nullable;
 
 import mlxy.utils.T;
 
@@ -22,22 +22,22 @@ import mlxy.utils.T;
  */
 
 public class LauncherActivity extends Activity {
+    EditText phonenum;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
-        findViewById(R.id.watch).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(LauncherActivity.this,"请使用手表Demo版本SDK", Toast.LENGTH_LONG).show();
-            }
-        });
+        phonenum = findViewById(R.id.phonenum);
         findViewById(R.id.hospital).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HHDoctorSDK.openHospital(LauncherActivity.this,"17864213635");
+                try {
+                    HHDoctorSDK.openHospital(LauncherActivity.this, phonenum.getText().toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
-
 }

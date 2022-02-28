@@ -22,7 +22,6 @@ public class AppContext extends Application {
         sInstance = this;
 
         HHDoctorSDK.initSDK(this);
-//        Log.i("HHDoctorSDK", HHDoctorSDK.readMetaDataFromApplication(this,"HHDoctorSDK"));
 
     }
 

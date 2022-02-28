@@ -8,20 +8,6 @@ android {
     }
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion buildToolsVersion
-    signingConfigs {
-        release {
-            keyAlias 'phonelive'
-            keyPassword 'phonelive'
-            storeFile file('../drant.jks')
-            storePassword 'phonelive'
-        }
-        debug {
-            keyAlias 'phonelive'
-            keyPassword 'phonelive'
-            storeFile file('../drant.jks')
-            storePassword 'phonelive'
-        }
-    }
     aaptOptions {
         cruncherEnabled = false
         useNewCruncher = false
@@ -54,8 +40,8 @@ android {
             buildConfigField("boolean", "IS_LOG_DEBUG", 'false')
             manifestPlaceholders = [bugly: false]
         }
+
         debug {
-            signingConfig signingConfigs.release
             buildConfigField("boolean", "IS_APP_DEBUG", "${IS_APP_DEBUG}")
             buildConfigField("boolean", "IS_LOG_DEBUG", 'true')
             manifestPlaceholders = [bugly: true]
@@ -103,14 +89,5 @@ repositories {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'org.jetbrains:annotations:15.0'
-//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-//    implementation project(':HHDoctorVideo')
-//    compile files('libs/HHDoctorVideo-release.aar')
-//    api 'com.android.support:appcompat-v7:27.1.1'
-//    api 'com.android.support:recyclerview-v7:27.1.1'
-//    api 'com.android.support:design:27.1.1'
-//    api 'com.android.support:support-v4:27.1.1'
-//    api 'com.android.support:multidex:1.0.1'
-//    api 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.chuangjin:HHDoctorSDK:1.1.7'
+    implementation 'com.chuangjin:HHDoctorSDK:1.1.9'
 }
