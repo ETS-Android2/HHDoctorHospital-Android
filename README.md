@@ -11,6 +11,8 @@
 2、进入互联网医院：
 
     HHDoctorSDK.openHospital(Activity activity,String phone);
+    
+    （phone：加密后的手机号）
    
    
 ### 参数配置
@@ -22,7 +24,7 @@
         android:value="填写获取到的机构号"/>
     <meta-data
         android:name="partcode"
-        android:value="填写获取到的机构密钥"/>
+        android:value="填写获取到的机构代码加密"/>
         
         
 （二）、根层build.gradle下添加：
