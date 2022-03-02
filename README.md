@@ -49,7 +49,7 @@
  
  （三）、子build.gradle下添加：
  
-    implementation 'com.chuangjin:HHDoctorSDK:1.1.9'
+    implementation 'com.chuangjin:HHDoctorSDK:1.2.0'
     
   （四）、Android-Demo：
   
